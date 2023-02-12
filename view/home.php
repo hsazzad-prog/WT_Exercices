@@ -50,7 +50,7 @@ Phone :
 <br>  
 <br> <br>  
 Email:  
-<input type="email" id="email" name="email"/> <br>    
+<input type="text" id="email" name="email"/> <br>    
 <br> <br>  
 Password:  
 <input type="Password" id="pass" name="pass"> <br>   

@@ -18,6 +18,21 @@ else{
     echo "<br>your gender is not set";
 }
 
+if(empty($_REQUEST["email"]))
+{
+   if(!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix",$_REQUEST["email"]))
+{
+    echo "<br>please enter a valid email address";
+}
+else{
+    echo "<br>your email address is".$_REQUEST["email"];
+}
+}
+else{
+    echo "<br>your gender is not set";
+}
+
+
 if(isset($_REQUEST["course"]))
 {
     $course=$_REQUEST["course"];
