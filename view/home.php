@@ -1,3 +1,7 @@
+<?php 
+include '../control/process.php';
+?>
+
 <html>  
 <head>   
 <title>  
@@ -7,11 +11,11 @@ Registration Page
 <body bgcolor="Lightskyblue">  
 <br>  
 <br>  
-<form action="../control/process.php" method="POST">  
+<form action="" method="POST" enctype="multipart/form-data">  
 
 
  Firstname        
-<input type="text" name="firstname" size="15"/> <br> <br>  
+<input type="text" name="firstname" size="15"/> <?php echo $fnameerror ?><br> <br>  
  Middlename:    
 <input type="text" name="middlename" size="15"/> <br> <br>  
  Lastname:       
@@ -48,6 +52,7 @@ Phone :
 <input type="text" name="phone" size="10"/> <br> <br>  
   
 <br>  
+<input type="file" name="image">
 <br> <br>  
 Email:  
 <input type="text" id="email" name="email"/> <br>    
@@ -57,7 +62,7 @@ Password:
 <br> <br>  
 Re-type password:  
 <input type="Password" id="repass" name="repass"> <br> <br>  
-<input type="submit" value="Submit"/>  
+<input type="submit" name="Submit" value="Submit"/>  
 </form>  
 </body>  
 </html>  

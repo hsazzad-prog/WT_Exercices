@@ -1,0 +1,38 @@
+[
+    {
+        "fname": "Sazzad",
+        "lname": "Hossain",
+        "gender": "male",
+        "email": "sazzad.utm@gmail.com",
+        "password": "432",
+        "course": "BCA",
+        "file": "..\/uploads\/sazzad.utm@gmail.com.jpg"
+    },
+    {
+        "fname": "abc",
+        "lname": "def",
+        "gender": "male",
+        "email": "def@gmail.com",
+        "password": "321",
+        "course": "BBA",
+        "file": "..\/uploads\/def@gmail.com.jpg"
+    },
+    {
+        "fname": "xyz",
+        "lname": "zyv",
+        "gender": "male",
+        "email": "xyz@mail.com",
+        "password": "333",
+        "course": "MCA",
+        "file": "..\/uploads\/xyz@mail.com.jpg"
+    },
+    {
+        "fname": "Sazzad",
+        "lname": "Hossain",
+        "gender": "male",
+        "email": "sazzad.utm@gmail.com",
+        "password": "123",
+        "course": "MBA",
+        "file": "..\/uploads\/sazzad.utm@gmail.com.jpg"
+    }
+]
