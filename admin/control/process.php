@@ -1,4 +1,16 @@
 <?php
+
+$printcookie="";
+setcookie("visit","1",time()+36000);
+if(isset($_COOKIE["visit"]))
+{
+    $printcookie= "visited";
+}
+else
+{
+    $printcookie= "welcome";
+}
+
 $fnameerror="";
 if(isset($_REQUEST["Submit"]))
 {

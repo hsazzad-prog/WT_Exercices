@@ -1,4 +1,10 @@
 <?php
+session_start();
+if(!empty($_SESSION["email"]))
+{
+    header("Location: ../view/profile.php");
+}
+
 
 if(isset($_REQUEST["login"]))
 {
@@ -19,19 +25,19 @@ if(isset($_REQUEST["login"]))
 if($myobj->email==$_REQUEST["email"] && $myobj->password==$_REQUEST["password"])
 {
    
+    $_SESSION["email"]=$myobj->email;
+    header("Location: ../view/profile.php");
     $match=1;
 }
-        }
-        if($match==1)
-        {
-           header("Location: ../view/profile.php");
-        }
-        else{
-            echo "login failed";
-        }
+
 
     }
+    if($match==0)
+    {
+        echo "login failed";
+    }
 
+}
 }
 
 
