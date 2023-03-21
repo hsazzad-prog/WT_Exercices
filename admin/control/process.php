@@ -1,5 +1,5 @@
 <?php
-
+include("../model/mydb.php");
 $printcookie="";
 setcookie("visit","1",time()+36000);
 if(isset($_COOKIE["visit"]))
@@ -21,19 +21,13 @@ if(empty($fname))
     $fnameerror= "name not found";
     $haserror=1;
 }
-else{
-    $fnameerror= "your first name is ". $fname;
 
-}
 if(empty($_REQUEST["lastname"]))
 {
     $lnameerror= "name not found";
     $haserror=1;
 }
-else{
-    $lnameerror= "your first name is ". $_REQUEST["lastname"];
 
-}
 
 
 if(isset($_REQUEST["gender"]))
@@ -41,10 +35,7 @@ if(isset($_REQUEST["gender"]))
     $gender=$_REQUEST["gender"];
     echo "<br>your gender is ". $gender;
 }
-else{
-    echo "<br>your gender is not set";
-    $haserror=1;
-}
+
 
 if(!empty($_REQUEST["email"]))
 {
@@ -53,9 +44,7 @@ if(!empty($_REQUEST["email"]))
     echo "<br>please enter a valid email address";
     $haserror=1;
 }
-else{
-    echo "<br>your email address is".$_REQUEST["email"];
-}
+
 }
 else{
     echo "<br>Enter your email address";
@@ -72,9 +61,7 @@ if(isset($_REQUEST["course"]))
         echo "<br>please select a course";
         $haserror=1;
     }
-    else{
-        echo "<br>your course is ". $course;
-    }
+   
    
 }
 else{
@@ -91,31 +78,46 @@ else{
 }
 if($haserror==0)
 {
-$existingdata=file_get_contents("../data/jsondata.json");
-$phpdata=json_decode($existingdata);
-    $formdata=array(
-        "fname"=>$_REQUEST["firstname"],
-        "lname"=>$_REQUEST["lastname"],
-        "gender"=>$_REQUEST["gender"],
-        "email"=>$_REQUEST["email"],
-        "password"=>$_REQUEST["pass"],
-        "course"=>$_REQUEST["course"],
-        "file"=>"../uploads/".$_REQUEST["email"].".jpg",
-    );
-    $phpdata[]=$formdata;
-
-    $jsondata=json_encode($phpdata,JSON_PRETTY_PRINT);
-
-if(file_put_contents("../data/jsondata.json",$jsondata))
+$mydb= new MyDB();
+$conobj= $mydb->openCon();
+$result=$mydb->insertData("customer",$_REQUEST["firstname"],$_REQUEST["lastname"],
+$_REQUEST["gender"],$_REQUEST["email"],$_REQUEST["pass"],$_REQUEST["course"],
+"../uploads/".$_REQUEST["email"].".jpg",$conobj);
+if($result===TRUE)
 {
-    echo "file written successfully";
+    echo "Success";
 }
-else{
-    echo "file written failed";
+else
+{
+    echo "Error".$conobj->error;
 }
 
-}
+// $existingdata=file_get_contents("../data/jsondata.json");
+// $phpdata=json_decode($existingdata);
+//     $formdata=array(
+//         "fname"=>$_REQUEST["firstname"],
+//         "lname"=>$_REQUEST["lastname"],
+//         "gender"=>$_REQUEST["gender"],
+//         "email"=>$_REQUEST["email"],
+//         "password"=>$_REQUEST["pass"],
+//         "course"=>$_REQUEST["course"],
+//         "file"=>"../uploads/".$_REQUEST["email"].".jpg",
+//     );
+//     $phpdata[]=$formdata;
 
+//     $jsondata=json_encode($phpdata,JSON_PRETTY_PRINT);
+
+// if(file_put_contents("../data/jsondata.json",$jsondata))
+// {
+//     echo "file written successfully";
+// }
+// else{
+//     echo "file written failed";
+// }
+
+// }
+
+}
 
 }
 

@@ -10,16 +10,11 @@ Registration Page
 </head>  
 <body bgcolor="Lightskyblue">  
 <?php include '../../layouts/header.php'; 
-echo "<br>".$_SERVER['SERVER_NAME'];
-echo "<br>".$_SERVER['PHP_SELF'];
-echo "<br>".$_SERVER['HTTP_HOST'];
+
 ?>
 
 <br>  
 <br>
-<?php 
-echo  $printcookie;
-?>
 
 <form action="" method="POST" enctype="multipart/form-data">  
 
