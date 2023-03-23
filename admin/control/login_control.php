@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "../model/mydb.php";
 if(!empty($_SESSION["email"]))
 {
     header("Location: ../view/profile.php");
@@ -18,27 +19,24 @@ if(isset($_REQUEST["login"]))
         echo "Please enter your password";
     }
     else{
-        $filedata=file_get_contents("../data/jsondata.json");
-        $phpobj=json_decode($filedata);
-        foreach($phpobj as $myobj)
-        {
-if($myobj->email==$_REQUEST["email"] && $myobj->password==$_REQUEST["password"])
+$mydb= new MyDB();
+$conobj=$mydb->openCon();
+$result=$mydb->checkUser("customer",$_REQUEST["email"], $_REQUEST["password"],
+$conobj);  
+if($result->num_rows >0)
 {
-   
-    $_SESSION["email"]=$myobj->email;
+    $_SESSION["email"]=$_REQUEST["email"];
     header("Location: ../view/profile.php");
-    $match=1;
+} 
+else
+{
+    echo "Please correct email and password";
 }
 
-
-    }
-    if($match==0)
-    {
-        echo "login failed";
     }
 
 }
-}
+
 
 
 ?>
