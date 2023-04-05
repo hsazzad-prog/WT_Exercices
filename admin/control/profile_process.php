@@ -1,22 +1,24 @@
 <?php
 session_start();
-$fname=$lname=$email="";
+include "../model/mydb.php";
+$fname=$lname=$email=$gender=$course=$file="";
 if(empty($_SESSION["email"]))
 {
     header("Location: ../view/login.php");
 }
-
-$jsondata = file_get_contents("../data/jsondata.json");
-$phpdata= json_decode($jsondata);
-foreach($phpdata as $myobj)
+$mydb= new MyDB();
+$conobj=$mydb->openCon();
+$result=$mydb->getUserInfo("customer", $_SESSION["email"], $conobj);
+if($result->num_rows > 0)
 {
-    if($_SESSION["email"]==$myobj->email)
-    {
-        $fname= $myobj->fname."<br>";
-        $lname= $myobj->lname."<br>";
-        $email= $myobj->email."<br>";
+    while($row=$result->fetch_assoc()){
+        $fname=$row["firstname"];
+        $lname=$row["lastname"];
+        $email=$row["email"];
+        $gender=$row["gender"];
+        $course=$row["course"];
+        $file=$row["file"];
     }
 }
-
 
 ?>
