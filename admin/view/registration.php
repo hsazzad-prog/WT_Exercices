@@ -15,12 +15,15 @@ Registration Page
 
 <br>  
 <br>
-
-<form action="" method="POST" enctype="multipart/form-data">  
+<script src="../js/myscript.js"></script>
+<form action="" method="POST" enctype="multipart/form-data"
+onsubmit="return validation()">  
 
 
  Firstname        
-<input type="text" name="firstname" size="15"/> <?php echo $fnameerror ?><br> <br>  
+<input type="text" id="fname" name="firstname" size="15"/> 
+<p id="fnameerror"></p>
+<?php echo $fnameerror ?><br> <br>  
  Middlename:    
 <input type="text" name="middlename" size="15"/> <br> <br>  
  Lastname:       
@@ -44,11 +47,12 @@ Course :
    
 Gender :  
 <br>  
-<input type="radio" name="gender" value="male"/> Male <br>  
-<input type="radio" name="gender" value="female"/> Female <br>  
-<input type="radio" name="gender" value="other"/> Other  
+<input type="radio" id="gender" name="gender" value="male"/> Male <br>  
+<input type="radio" id="gender" name="gender" value="female"/> Female <br>  
+<input type="radio" id="gender" name="gender" value="other"/> Other  
+<p id="gendererror"></p>
 <br>  
-<br>  
+
   
 
 Phone :  

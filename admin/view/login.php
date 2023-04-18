@@ -7,15 +7,20 @@ include ('../control/login_control.php');
 <title>  
 Login Page  
 </title>  
-</head>  
+<link rel="stylesheet" type="text/css" href="../../css/mystyle.css">
+</head>
+
 <body bgcolor="white">  
 <?php include '../../layouts/header.php';?>
+<div>
 <form action="" method="POST">
-Email: <input type="text" name="email">
-Password: <input type="password" name="password">
-<input type="submit" name="login" value="Log In">
+<h5 id="pcustome">Email:</h5> <input type="text" name="email">
+<p id="pcustome">Password:</p> <input type="password" name="password">
+<br>
+<input type="submit" class="button submit" name="login" value="Log In">
+<input type="reset" class="button reset" name="login" value="Reset">
 </form>
-
+</div>
 <?php include '../../layouts/footer.php';?>
 </body>
 
